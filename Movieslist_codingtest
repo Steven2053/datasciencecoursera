@@ -1,0 +1,25 @@
+import sqlite3
+
+connection = sqlite3.connect("Movie_list.db")
+
+cursor = connection.cursor()
+
+command1 = """CREATE TABLE IF NOT EXISTS movies(name TEXT, actor TEXT, actress TEXT, director TEXT, year of release INTEGER)"""
+
+cursor.execute(command1)
+
+cursor.execute(
+    "INSERT INTO movies VALUES ('Jurrasic World', 'Chris Pratt', 'Bryce Dallas Howard', 'Colin Trevorrow', 2015)"
+)
+cursor.execute(
+    "INSERT INTO movies VALUES ('Spider-Man: No Way Home', 'Tom Holland', 'Zendaya', 'John Watts', 2021)"
+)
+
+cursor.execute("SELECT * FROM movies")
+
+results = cursor.fetchall()
+print(results)
+
+cursor.execute("SELECT name FROM movies WHERE actor='Chris Pratt'")
+partb = cursor.fetchone()
+print(partb)
